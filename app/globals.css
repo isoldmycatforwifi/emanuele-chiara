@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #f2ebe2;
+  --brand-background: #f4ede4;
+  --cream: #eee7da;
+  --paper: #fbf9f4;
+  --sage: #7b8874;
+  --sage-dark: #53604e;
+  --blush: #d9beb4;
+  --hero-cream: #f1ebe1;
+  --hero-gold: #b5945e;
+  --charcoal: #302e2a;
+  --muted: #756f66;
+  --line: rgba(48, 46, 42, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+html.menu-open,
+body.menu-open,
+body.modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--blush);
+  color: var(--charcoal);
+}
+
+.font-serif {
+  font-family: Didot, "Bodoni 72", "Bodoni MT", Iowan Old Style, Baskerville, "Times New Roman", serif;
+}
+
+.font-script {
+  font-family: "Snell Roundhand", "Apple Chancery", "URW Chancery L", cursive;
+}
+
+.hero-calm-background {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(181, 148, 94, 0.2), transparent 30%),
+    radial-gradient(circle at 12% 88%, rgba(241, 235, 225, 0.1), transparent 34%),
+    linear-gradient(135deg, #545b43 0%, #424934 48%, #343a2b 100%);
+}
+
+.eyebrow {
+  color: var(--sage-dark);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.page-enter {
+  animation: page-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.image-veil::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(26, 25, 22, 0.06), rgba(26, 25, 22, 0.5));
+  content: "";
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--sage-dark);
+  outline-offset: 4px;
+}
+
+.focus-ring-dark:focus-visible {
+  outline: 2px solid var(--hero-gold);
+  outline-offset: 4px;
+}
+
+.menu-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1px;
+  width: 1.5rem;
+  transform-origin: center;
+  background: currentColor;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+}
+
+.menu-line-top {
+  transform: translate(-50%, -7px);
+}
+
+.menu-line-middle {
+  transform: translate(-50%, -50%);
+}
+
+.menu-line-bottom {
+  transform: translate(-50%, 6px);
+}
+
+button[data-open="true"] .menu-line-top {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+button[data-open="true"] .menu-line-middle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0);
+}
+
+button[data-open="true"] .menu-line-bottom {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.mobile-menu-panel {
+  --menu-origin-x: calc(100% - 2.65rem);
+  --menu-origin-y: 2.375rem;
+  -webkit-clip-path: circle(0 at var(--menu-origin-x) var(--menu-origin-y));
+  clip-path: circle(0 at var(--menu-origin-x) var(--menu-origin-y));
+  pointer-events: none;
+  visibility: hidden;
+  transition: clip-path 540ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 540ms;
+}
+
+.mobile-menu-panel[data-open="true"] {
+  -webkit-clip-path: circle(150vmax at var(--menu-origin-x) var(--menu-origin-y));
+  clip-path: circle(150vmax at var(--menu-origin-x) var(--menu-origin-y));
+  pointer-events: auto;
+  visibility: visible;
+  transition: clip-path 540ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 640px) {
+  .mobile-menu-panel {
+    --menu-origin-x: calc(100% - 3.4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu-panel {
+    --menu-origin-y: 3.125rem;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .mobile-menu-panel,
+  .mobile-menu-panel[data-open="true"] {
+    -webkit-clip-path: none;
+    clip-path: none;
+  }
+}
