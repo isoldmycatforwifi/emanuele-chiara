@@ -16,7 +16,7 @@ export function LocationCard({ copy }: LocationCardProps) {
       aria-label={copy.aria}
       className="focus-ring group flex min-h-64 flex-col justify-between bg-[var(--sage-dark)] p-7 text-white sm:min-h-80 sm:p-10"
       href="https://www.google.com/maps/dir/?api=1&destination=Salerno%2C%20Italy"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       <div className="flex items-start justify-between gap-4">

@@ -28,7 +28,7 @@ export function WeddingPage({ locale }: { locale: Locale }) {
               allowFullScreen
               className="h-full min-h-80 w-full border-0 lg:min-h-[30rem]"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer"
               src="https://www.google.com/maps?q=Salerno%2C%20Italy&z=13&output=embed"
               title={copy.mapTitle}
             />
