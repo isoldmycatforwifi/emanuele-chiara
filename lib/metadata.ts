@@ -33,6 +33,7 @@ export function getPageMetadata(
       languages: {
         it: localizedPath("it", path),
         en: localizedPath("en", path),
+        de: localizedPath("de", path),
         sc: localizedPath("sc", path),
         "x-default": localizedPath("it", path),
       },
@@ -40,7 +41,7 @@ export function getPageMetadata(
     openGraph: {
       title: title ?? dictionary.global.defaultTitle,
       description: description ?? dictionary.global.description,
-      locale: locale === "en" ? "en_GB" : locale === "sc" ? "sc_IT" : "it_IT",
+      locale: locale === "en" ? "en_GB" : locale === "de" ? "de_DE" : locale === "sc" ? "sc_IT" : "it_IT",
       type: "website",
       url: canonical,
     },

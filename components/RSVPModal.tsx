@@ -16,6 +16,7 @@ type RSVPModalProps = {
     guestName: string;
     guestNamePlaceholder: string;
     guestCount: string;
+    hasChildren: string;
     needsRoom: string;
     yes: string;
     no: string;
@@ -28,13 +29,14 @@ type RSVPModalProps = {
 export function RSVPModal({ date, copy }: RSVPModalProps) {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const nameInputRef = useRef<HTMLInputElement>(null);
+  const [guestCount, setGuestCount] = useState(1);
+  const guestCountRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     document.body.classList.toggle("modal-open", open);
 
     if (open) {
-      const focusTimer = window.setTimeout(() => nameInputRef.current?.focus(), 100);
+      const focusTimer = window.setTimeout(() => guestCountRef.current?.focus(), 100);
       return () => {
         window.clearTimeout(focusTimer);
         document.body.classList.remove("modal-open");
@@ -112,29 +114,57 @@ export function RSVPModal({ date, copy }: RSVPModalProps) {
             ) : (
               <form className="mt-10 space-y-7" onSubmit={handleSubmit}>
                 <label className="block">
-                  <span className="mb-2 block text-[0.67rem] font-semibold uppercase tracking-[0.18em]">{copy.guestName}</span>
-                  <input
-                    className="focus-ring w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-3 text-base outline-none transition-colors focus:border-[var(--sage-dark)]"
-                    name="guestName"
-                    placeholder={copy.guestNamePlaceholder}
-                    ref={nameInputRef}
-                    required
-                    type="text"
-                  />
-                </label>
-
-                <label className="block">
                   <span className="mb-2 block text-[0.67rem] font-semibold uppercase tracking-[0.18em]">{copy.guestCount}</span>
                   <input
                     className="focus-ring w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-3 outline-none transition-colors focus:border-[var(--sage-dark)]"
-                    defaultValue={1}
                     max={10}
                     min={1}
                     name="guestCount"
+                    onChange={(event) => {
+                      const nextCount = Number(event.currentTarget.value);
+                      if (Number.isFinite(nextCount)) setGuestCount(Math.min(10, Math.max(1, nextCount)));
+                    }}
+                    ref={guestCountRef}
                     required
                     type="number"
+                    value={guestCount}
                   />
                 </label>
+
+                <div className="space-y-5">
+                  {Array.from({ length: guestCount }, (_, index) => (
+                    <label className="block" key={index}>
+                      <span className="mb-2 block text-[0.67rem] font-semibold uppercase tracking-[0.18em]">
+                        {copy.guestName} {index + 1}
+                      </span>
+                      <input
+                        autoComplete="name"
+                        className="focus-ring w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-3 text-base outline-none transition-colors focus:border-[var(--sage-dark)]"
+                        name={`guestName${index + 1}`}
+                        placeholder={copy.guestNamePlaceholder}
+                        required
+                        type="text"
+                      />
+                    </label>
+                  ))}
+                </div>
+
+                <fieldset>
+                  <legend className="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.18em]">{copy.hasChildren}</legend>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { label: copy.yes, value: "yes" },
+                      { label: copy.no, value: "no" },
+                    ].map((option) => (
+                      <label className="cursor-pointer" key={option.value}>
+                        <input className="peer sr-only" name="hasChildren" required type="radio" value={option.value} />
+                        <span className="flex min-h-12 items-center justify-center border border-[var(--line)] text-sm transition-colors peer-checked:border-[var(--sage-dark)] peer-checked:bg-[var(--sage-dark)] peer-checked:text-white">
+                          {option.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
 
                 <fieldset>
                   <legend className="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.18em]">{copy.needsRoom}</legend>

@@ -14,7 +14,7 @@ type LocalizedLayoutProps = Readonly<{
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "sc" }];
+  return [{ locale: "en" }, { locale: "de" }, { locale: "sc" }];
 }
 
 export async function generateMetadata({ params }: LocalizedLayoutProps): Promise<Metadata> {

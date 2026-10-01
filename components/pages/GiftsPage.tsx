@@ -24,14 +24,24 @@ export function GiftsPage({ locale }: { locale: Locale }) {
               </div>
             </div>
           </div>
-          <div className="group relative aspect-[4/5] min-h-[32rem] overflow-hidden lg:aspect-auto">
+          <div className="relative min-h-[38rem] overflow-hidden lg:min-h-0">
             <Image
               alt={copy.safariAlt}
-              className="editorial-image object-cover"
+              className="object-cover"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               src={images.safari}
             />
+            <div className="absolute bottom-5 right-5 w-[38%] max-w-[15rem] border-[6px] border-[var(--paper)] bg-[var(--paper)] shadow-xl sm:bottom-8 sm:right-8">
+              <Image
+                alt={copy.safariCoupleAlt}
+                className="h-auto w-full"
+                height={2400}
+                sizes="(max-width: 1024px) 35vw, 16vw"
+                src={images.safariCouple}
+                width={1800}
+              />
+            </div>
           </div>
         </div>
       </section>

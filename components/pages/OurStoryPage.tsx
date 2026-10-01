@@ -33,27 +33,35 @@ export function OurStoryPage({ locale }: { locale: Locale }) {
             <p className="font-serif text-3xl leading-[1.18] tracking-[-0.025em] sm:text-4xl lg:max-w-sm">{copy.beginningLead}</p>
           </div>
           <div className="max-w-2xl space-y-7 text-[0.98rem] leading-8 text-[var(--muted)] sm:text-lg sm:leading-9">
-            {copy.paragraphs.slice(0, 2).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {copy.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
         </div>
       </section>
 
       <section className="grid bg-[var(--cream)] lg:grid-cols-2">
-        <div className="flex items-center justify-center p-5 sm:p-10 lg:p-16">
+        <div className="grid grid-cols-[1.1fr_0.9fr] items-center gap-3 p-5 sm:gap-5 sm:p-10 lg:p-16">
           <Image
             alt={copy.earlyDaysAlt}
-            className="h-auto w-full max-w-2xl"
+            className="h-auto w-full"
             height={1890}
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 58vw, 30vw"
             src={images.storyOne}
             width={1512}
+          />
+          <Image
+            alt={copy.blackWhiteAlt}
+            className="h-auto w-full"
+            height={2400}
+            sizes="(max-width: 1024px) 40vw, 20vw"
+            src={images.storyOneSecondary}
+            width={1800}
           />
         </div>
         <div className="flex items-center px-6 py-20 sm:px-12 sm:py-28 lg:px-20">
           <div className="max-w-lg">
             <p className="eyebrow mb-5">{copy.thenEyebrow}</p>
             <h2 className="font-serif text-balance text-[clamp(3rem,6vw,5.4rem)] leading-[0.98] tracking-[-0.045em]">{copy.thenTitle}</h2>
-            <p className="mt-8 text-base leading-8 text-[var(--muted)]">{copy.paragraphs[2]}</p>
+            <p className="mt-8 text-base leading-8 text-[var(--muted)]">{copy.thenBody}</p>
           </div>
         </div>
       </section>

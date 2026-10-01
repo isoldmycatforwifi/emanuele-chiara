@@ -12,19 +12,23 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-4.75rem)] items-center justify-center overflow-hidden bg-[#3f4431] px-5 py-12 text-[var(--hero-cream)] sm:px-8 lg:min-h-[calc(100svh-6.25rem)] lg:px-12 lg:py-16">
-        <div aria-hidden="true" className="hero-calm-background absolute inset-0" />
-        <div aria-hidden="true" className="absolute -right-48 top-[7%] h-[34rem] w-[34rem] rounded-full border border-[var(--hero-gold)]/15 sm:-right-28 lg:h-[46rem] lg:w-[46rem]" />
-        <div aria-hidden="true" className="absolute -bottom-64 -left-44 h-[34rem] w-[34rem] rounded-full border border-white/8 lg:h-[42rem] lg:w-[42rem]" />
-        <div aria-hidden="true" className="absolute right-[12%] top-[20%] h-px w-36 rotate-[-28deg] bg-[var(--hero-gold)]/20 sm:w-64" />
-        <div aria-hidden="true" className="absolute bottom-[18%] left-[9%] h-px w-28 rotate-[18deg] bg-white/10 sm:w-52" />
+      <section className="relative flex min-h-[calc(100svh-4.75rem)] items-center justify-center overflow-hidden bg-[#fffdf9] px-5 py-12 text-[var(--charcoal)] sm:px-8 lg:min-h-[calc(100svh-6.25rem)] lg:px-12 lg:py-16">
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-85"
+          fill
+          priority
+          sizes="100vw"
+          src={images.homeFlowers}
+        />
 
         <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-          <p className="mb-7 text-[0.66rem] font-medium uppercase tracking-[0.36em] text-[var(--hero-cream)]/85 sm:mb-8 sm:text-xs">
+          <p className="mb-7 text-[0.66rem] font-medium uppercase tracking-[0.36em] text-[var(--sage-dark)] sm:mb-8 sm:text-xs">
             {copy.heroEyebrow}
           </p>
 
-          <h1 aria-label="Emanuele & Chiara" className="font-serif text-[clamp(3.8rem,14vw,9.25rem)] leading-[0.76] tracking-[-0.045em] drop-shadow-[0_2px_18px_rgba(0,0,0,0.12)]">
+          <h1 aria-label="Emanuele & Chiara" className="font-serif text-[clamp(3.8rem,14vw,9.25rem)] leading-[0.76] tracking-[-0.045em]">
             <span aria-hidden="true" className="block -translate-x-[3%]">Emanuele</span>
             <span aria-hidden="true" className="mt-[0.08em] flex items-baseline justify-center gap-[0.11em]">
               <span className="text-[0.48em] font-normal text-[var(--hero-gold)]">&</span>
@@ -38,13 +42,13 @@ export function HomePage({ locale }: { locale: Locale }) {
             <span className="h-px flex-1 bg-[var(--hero-gold)]/75" />
           </div>
 
-          <p className="font-script mt-7 text-[clamp(1.75rem,4vw,2.6rem)] leading-none text-[var(--hero-cream)]/95 sm:mt-8">
+          <p className="font-script mt-7 text-[clamp(1.75rem,4vw,2.6rem)] leading-none text-[var(--sage-dark)] sm:mt-8">
             {copy.heroInvitation}
           </p>
 
           <Link
             aria-label={copy.scrollAria}
-            className="focus-ring-dark mt-8 inline-flex h-11 w-11 items-center justify-center text-[var(--hero-gold)] transition-transform duration-300 hover:translate-y-1 sm:mt-9"
+            className="focus-ring mt-8 inline-flex h-11 w-11 items-center justify-center text-[var(--sage-dark)] transition-transform duration-300 hover:translate-y-1 sm:mt-9"
             href="#save-the-date"
           >
             <ChevronDown className="h-8 w-8" />

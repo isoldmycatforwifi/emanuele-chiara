@@ -2,16 +2,15 @@ export const WEDDING_DATE = "2027-05-16T16:00:00+02:00";
 
 // Centralized photography so page components can stay focused on layout.
 export const images = {
-  homeHero: "/images/couple/poolside.jpg",
-  homeHeroSecondary: "/images/couple/garden-portrait.jpg",
+  homeFlowers: "/images/brand/save-the-date-florals.png",
   homeDetail:
     "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1800&q=85",
-  storyHero: "/images/couple/black-white-portrait.jpg",
+  storyHero: "/images/couple/mirror-selfie.jpg",
   storyOne: "/images/couple/city-street.jpg",
+  storyOneSecondary: "/images/couple/black-white-portrait.jpg",
   storyTwo: "/images/couple/engagement.jpg",
-  venue:
-    "https://images.unsplash.com/photo-1496024840928-4c417adf211d?auto=format&fit=crop&w=2000&q=85",
-  safari: "/images/couple/waterfall-adventure.jpg",
+  safari: "/images/brand/african-elephants-safari.png",
+  safariCouple: "/images/couple/waterfall-adventure.jpg",
 };
 
 export type GalleryImage = {

@@ -1,6 +1,10 @@
 import { ArrowUpRight, MapPinIcon } from "@/components/icons";
 
 type LocationCardProps = {
+  title: string;
+  subtitle: string;
+  address: string;
+  directionsHref: string;
   copy: {
     aria: string;
     label: string;
@@ -10,12 +14,12 @@ type LocationCardProps = {
   };
 };
 
-export function LocationCard({ copy }: LocationCardProps) {
+export function LocationCard({ title, subtitle, address, directionsHref, copy }: LocationCardProps) {
   return (
     <a
       aria-label={copy.aria}
-      className="focus-ring group flex min-h-64 flex-col justify-between bg-[var(--sage-dark)] p-7 text-white sm:min-h-80 sm:p-10"
-      href="https://www.google.com/maps/dir/?api=1&destination=Salerno%2C%20Italy"
+      className="focus-ring group flex min-h-72 flex-col justify-between bg-[var(--sage-dark)] p-7 text-white sm:min-h-80 sm:p-10"
+      href={directionsHref}
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -24,9 +28,11 @@ export function LocationCard({ copy }: LocationCardProps) {
         <MapPinIcon className="h-6 w-6 text-[var(--hero-gold)]" />
       </div>
       <div>
-        <h2 className="font-serif text-[clamp(3.4rem,8vw,6.5rem)] leading-[0.85] tracking-[-0.055em]">Salerno</h2>
-        <p className="mt-4 text-sm uppercase tracking-[0.25em] text-white/70">{copy.regionCountry}</p>
-        <span className="mt-8 inline-flex w-fit items-center gap-3 bg-[var(--hero-cream)] px-4 py-3 text-left text-[var(--sage-dark)] shadow-sm transition-transform duration-300 group-hover:translate-x-1">
+        <h2 className="font-serif text-[clamp(2.9rem,7vw,5.6rem)] leading-[0.88] tracking-[-0.05em]">{title}</h2>
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/80">{subtitle}</p>
+        <p className="mt-3 max-w-md text-sm leading-6 text-white/65">{address}</p>
+        <p className="mt-4 text-xs uppercase tracking-[0.2em] text-white/55">{copy.regionCountry}</p>
+        <span className="mt-7 inline-flex w-fit items-center gap-3 bg-[var(--hero-cream)] px-4 py-3 text-left text-[var(--sage-dark)] shadow-sm transition-transform duration-300 group-hover:translate-x-1">
           <MapPinIcon className="h-5 w-5 shrink-0" />
           <span>
             <span className="block text-xs font-semibold uppercase tracking-[0.15em]">{copy.mapsCta}</span>

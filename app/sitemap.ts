@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const languages = {
       it: absoluteUrl(localizedPath("it", route.href)),
       en: absoluteUrl(localizedPath("en", route.href)),
+      de: absoluteUrl(localizedPath("de", route.href)),
       sc: absoluteUrl(localizedPath("sc", route.href)),
       "x-default": absoluteUrl(localizedPath("it", route.href)),
     };
