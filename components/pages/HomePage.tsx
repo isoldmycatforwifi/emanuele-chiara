@@ -24,9 +24,15 @@ export function HomePage({ locale }: { locale: Locale }) {
         />
 
         <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-          <p className="mb-7 text-[0.66rem] font-medium uppercase tracking-[0.36em] text-[var(--sage-dark)] sm:mb-8 sm:text-xs">
-            {copy.heroEyebrow}
-          </p>
+          <div className="relative isolate mb-7 px-4 py-1 sm:mb-8">
+            <span
+              aria-hidden="true"
+              className="absolute -inset-x-10 -inset-y-5 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,253,249,0.98)_32%,rgba(255,253,249,0.82)_58%,rgba(255,253,249,0)_76%)]"
+            />
+            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.36em] text-[var(--sage-dark)] sm:text-xs">
+              {copy.heroEyebrow}
+            </p>
+          </div>
 
           <h1 aria-label="Emanuele & Chiara" className="font-serif text-[clamp(3.8rem,14vw,9.25rem)] leading-[0.76] tracking-[-0.045em]">
             <span aria-hidden="true" className="block -translate-x-[3%]">Emanuele</span>
